@@ -13,22 +13,22 @@ platform.Game.prototype = {
   create: function() {
       console.log("Game is running!");
 
-    if (platform.game.device.desktop === false) {
-      // set the scaling mode to SHOW_ALL to show all the platform.game
-      platform.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+//    if (platform.game.device.desktop === false) {
+//      // set the scaling mode to SHOW_ALL to show all the platform.game
+//      platform.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+//
+//      // set a minimum and maximum size for the platform.game
+//      // here the minimum is half the platform.game size
+//      // and the maximum is the original platform.game size
+//      platform.game.scale.setMinMax(platform.game.width/2, platform.game.height/2, platform.game.width, platform.game.height);
+//
+//    }
 
-      // set a minimum and maximum size for the platform.game
-      // here the minimum is half the platform.game size
-      // and the maximum is the original platform.game size
-      platform.game.scale.setMinMax(platform.game.width/2, platform.game.height/2, platform.game.width, platform.game.height);
-
-    }
-
-    backgound = platform.game.add.tileSprite(0, 0, platform.game.width, platform.game.height, 'background');
+    background = platform.game.add.tileSprite(0, 0, platform.game.width, platform.game.height, 'background');
 
     // center the platform.game horizontally and vertically
-    platform.game.scale.pageAlignHorizontally = true;
-    platform.game.scale.pageAlignVertically = true;
+//    platform.game.scale.pageAlignHorizontally = true;
+//    platform.game.scale.pageAlignVertically = true;
 
 
 
