@@ -45,7 +45,7 @@ platform.Game.prototype = {
 
     //Iphone Flip buttons
     buttonJump = this.game.add.button(50,600, 'jump-button', this.jump, this, 2, 1, 0);
-    buttonFlip = this.game.add.button(1150,600, 'flip-button', this.flip, this, 2, 1, 0);
+    buttonFlip = this.game.add.button(1059 ,600, 'flip-button', this.flip, this, 2, 1, 0);
 
     platform.game.physics.arcade.enable(this.player);
 
