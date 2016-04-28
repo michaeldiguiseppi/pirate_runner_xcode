@@ -93,16 +93,34 @@ platform.Game.prototype = {
       } else {
           window.localStorage.setItem("scoresObj", JSON.stringify({1: this.score}));
       }
-
-
       
-        platform.game.paused = true;
-        console.log(this.score);
-        // Then add the menu
-        menu = platform.game.add.sprite(platform.game.width/2, platform.game.height/2, 'menu');
-        menu.anchor.setTo(0.5, 0.5);
+      var data = JSON.stringify({
+                                "name": "Danny Robinson App",
+                                "score": this.score
+                                });
+      
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      
+      xhr.addEventListener("readystatechange", function () {
+                           if (this.readyState === 4) {
+                           console.log(this.responseText);
+                           }
+                           });
+      console.log("Data to send: ", data);
+      xhr.open("POST", "https://pirate-runner.herokuapp.com/score");
+      xhr.setRequestHeader("content-type", "application/json");
+      xhr.setRequestHeader("cache-control", "no-cache");
+      
+      xhr.send(data);
+      
+    platform.game.paused = true;
+    console.log(this.score);
+    // Then add the menu
+    menu = platform.game.add.sprite(platform.game.width/2, platform.game.height/2, 'menu');
+    menu.anchor.setTo(0.5, 0.5);
 
-        platform.game.input.onDown.add(this.unpause, self);
+    platform.game.input.onDown.add(this.unpause, self);
 
 
   },
