@@ -2,6 +2,7 @@ var platform = platform || {};
 
 platform.Preload = function() {};
 
+
 platform.Preload.prototype = {
     preload: function() {
         this.load.image('ground', 'assets/gray.png');
@@ -12,8 +13,11 @@ platform.Preload.prototype = {
         this.load.image('jump-button', 'assets/jump-Button.png');
         this.load.image('flip-button', 'assets/flip-Button.png');
         this.load.image('background', 'assets/pirate.jpg');
+        this.load.image('menu-back', 'assets/pirate_entry.png');
       },
     create: function() {
+
+
         this.state.start('Menu');
     }
 };

@@ -11,6 +11,7 @@ platform.Game.prototype = {
   jumpHeight: 500,
   fps: 15,
   create: function() {
+      console.log("Game is running!");
 
     if (platform.game.device.desktop === false) {
       // set the scaling mode to SHOW_ALL to show all the platform.game
@@ -78,11 +79,23 @@ platform.Game.prototype = {
   },
   gameOver: function(){
         // When the paus button is pressed, we pause the game
-        var key = Math.random(10000);
-        var data = {
-                score: this.score
-              };
-//        lawnchair.save({key: key, dataList: data});
+      console.log(window.localStorage.getItem("scoresObj"));
+      if (window.localStorage.getItem("scoresObj")){
+          var scores = JSON.parse(window.localStorage.getItem("scoresObj"));
+          console.log(scores);
+          var length = Object.keys(scores);
+          var gameNum = +length + 1;
+          var score = this.score;
+          scores[gameNum] = score;
+          
+          window.localStorage.setItem("scoresObj", JSON.stringify(scores));
+          console.log(JSON.parse(window.localStorage.getItem("scoresObj")));
+      } else {
+          window.localStorage.setItem("scoresObj", JSON.stringify({1: this.score}));
+      }
+
+
+      
         platform.game.paused = true;
         console.log(this.score);
         // Then add the menu
