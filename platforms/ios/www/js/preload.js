@@ -9,7 +9,7 @@ platform.Preload.prototype = {
         this.load.image('box', 'assets/RTS_Crate.png');
         this.load.image('coin', 'assets/coin_01.png');
         this.load.image('menu', 'assets/lazy_menu.png');
-        this.load.spritesheet('hero', 'assets/Run.png', 33.6, 50, 8);
+        this.load.spritesheet('hero', 'assets/Run.png', 67, 100, 8);
         this.load.image('jump-button', 'assets/jump-Button.png');
         this.load.image('flip-button', 'assets/flip-Button.png');
         this.load.image('background', 'assets/pirate.jpg');
