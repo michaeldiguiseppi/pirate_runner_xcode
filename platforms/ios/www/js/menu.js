@@ -27,7 +27,7 @@ platform.Menu.prototype = {
         
 
         this.game.add.button(250,360, 'box', this.startGame, this, 2, 1, 0);
-        this.game.add.button(940,360, 'box', this.startGame, this, 2, 1, 0);
+        this.game.add.button(940,360, 'box', this.highScores, this, 2, 1, 0);
 
     },
     update: function() {
@@ -36,5 +36,9 @@ platform.Menu.prototype = {
     startGame: function() {
         console.log("Click registered");
         platform.game.state.start('Game');
+    },
+    highScores: function(){
+        console.log("high Scores!");
+        platform.game.state.start('HighScores');
     }
 };

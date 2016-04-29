@@ -12,6 +12,7 @@ var Score = 0;
 
 
 platform.game.state.add('Preload', platform.Preload);
+platform.game.state.add('HighScores', platform.HighScores);
 platform.game.state.add('Menu', platform.Menu);
 platform.game.state.add('Game', platform.Game);
 platform.game.state.add('GameOver', platform.GameOver);

@@ -15,10 +15,14 @@ platform.Preload.prototype = {
         this.load.image('background', 'assets/pirate.jpg');
         this.load.image('menu-back', 'assets/pirate_entry.png');
         this.load.image('game-over', 'assets/game_over.jpg');
+        this.load.image('high-scores', 'assets/high-scores.jpg');
       },
     create: function() {
 
-
+        var user = prompt("Please enter your name for high score entry ");
+        window.localStorage.setItem("currentUser", user);
+        window.localStorage.setItem("highScore", 0);
+        console.log(window.localStorage.getItem("currentUser"));
         this.state.start('Menu');
     }
 };
