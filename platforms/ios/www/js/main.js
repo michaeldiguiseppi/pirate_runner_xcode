@@ -66,23 +66,20 @@ platform.Game.prototype = {
   },
   gameOver: function(){
         // When the paus button is pressed, we pause the game
-      console.log(window.localStorage.getItem("scoresObj"));
-      if (window.localStorage.getItem("scoresObj")){
-          var scores = JSON.parse(window.localStorage.getItem("scoresObj"));
-          console.log(scores);
-          var length = Object.keys(scores);
-          var gameNum = +length + 1;
-          var score = this.score;
-          scores[gameNum] = score;
-          
-          window.localStorage.setItem("scoresObj", JSON.stringify(scores));
-          console.log(JSON.parse(window.localStorage.getItem("scoresObj")));
-      } else {
-          window.localStorage.setItem("scoresObj", JSON.stringify({1: this.score}));
-      }
-      
+      console.log("First High Score ", window.localStorage.getItem("highScore"));
+
+          var highScore = parseInt(window.localStorage.getItem("highScore"));
+          console.log("Curr high score: ", highScore);
+          console.log("Curr Score: ", this.score);
+      console.log("Is Greateer ", (this.score > highScore));
+          if (this.score > highScore){
+              console.log("it's greater!!!");
+          window.localStorage.setItem("highScore", this.score);
+          console.log("if high score ", window.localStorage.getItem("highScore"));
+          }
+
       var data = JSON.stringify({
-                                "name": "Danny Robinson App",
+                                "name": "Blah Blah Blah App",
                                 "score": this.score
                                 });
       
@@ -91,7 +88,6 @@ platform.Game.prototype = {
       
       xhr.addEventListener("readystatechange", function () {
                            if (this.readyState === 4) {
-                           console.log(this.responseText);
                            }
                            });
       console.log("Data to send: ", data);
@@ -102,9 +98,11 @@ platform.Game.prototype = {
       xhr.send(data);
       
     platform.game.paused = true;
-    console.log(this.score);
+    console.log("here's the score" , this.score);
     // Then add the menu
-    menu = platform.game.add.sprite(platform.game.width/2, platform.game.height/2, 'menu');
+    menu = platform.game.add.sprite(platform.game.width/2, platform.game.height/2, 'game-over');
+      var currHighScore = window.localStorage.getItem("highScore");
+      this.game.add.text(500,500, 'Your current high score: '+ currHighScore, {font:'32px Arial', fill: 'black'});
     menu.anchor.setTo(0.5, 0.5);
 
     platform.game.input.onDown.add(this.unpause, self);
@@ -115,8 +113,8 @@ platform.Game.prototype = {
       // Only act if paused
       if(platform.game.paused){
           // Calculate the corners of the menu
-          var x1 = platform.game.width/2 - 270/2, x2 = platform.game.width/2 + 270/2,
-              y1 = platform.game.height/2 - 180/2, y2 = platform.game.height/2 + 180/2;
+          var x1 = platform.game.width/2 - 600/2, x2 = platform.game.width/2 + 600/2,
+              y1 = platform.game.height/2 - 330/2, y2 = platform.game.height/2 + 330/2;
           // Check if the click was inside the menu
           if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 ){
               platform.game.paused = false;
@@ -183,7 +181,7 @@ platform.Game.prototype = {
     this.jumpHeight += 50;
     this.fps += 2;
   },
-  heights: [530, 175, 475, 110],
+  heights: [645, 330, 530, 215],
   addBoxes: function() {
     this.incrementer++;
     var rand = Math.floor(Math.random() * 10);
@@ -193,17 +191,17 @@ platform.Game.prototype = {
       this.addBox(1334, this.game.height-this.heights[randHeight], this.velocity);
       if (rand > 8 ){
          switch (this.heights[randHeight]){
-           case 110:
-             this.addCoin(1334, this.game.height-this.heights[randHeight] - 15, this.velocity);
+           case 215:
+             this.addCoin(1334, this.game.height-this.heights[randHeight] - 115, this.velocity);
            break;
-           case 175:
-             this.addCoin(1334, this.game.height-this.heights[randHeight] + 25, this.velocity);
-           break;
-           case 475:
-             this.addCoin(1334, this.game.height-this.heights[randHeight] - 25, this.velocity);
+           case 330:
+             this.addCoin(1334, this.game.height-this.heights[randHeight] + 100, this.velocity);
            break;
            case 530:
-             this.addCoin(1334, this.game.height-this.heights[randHeight] + 15, this.velocity);
+             this.addCoin(1334, this.game.height-this.heights[randHeight] - 100, this.velocity);
+           break;
+           case 645:
+             this.addCoin(1334, this.game.height-this.heights[randHeight] + 115, this.velocity);
            break;
          }
        }

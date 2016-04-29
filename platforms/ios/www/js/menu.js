@@ -24,7 +24,7 @@ platform.Menu.prototype = {
         
         this.game.stage.backgroundColor = '#707070';
         background = this.game.add.tileSprite(0, 0, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, 'menu-back');
-        this.game.add.text(220,50, 'Welcome to ze Game!!!', {font:'20px Arial', fill: '#fff'});
+        
 
         this.game.add.button(250,360, 'box', this.startGame, this, 2, 1, 0);
         this.game.add.button(940,360, 'box', this.startGame, this, 2, 1, 0);
